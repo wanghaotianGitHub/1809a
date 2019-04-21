@@ -125,7 +125,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/laravel-admin/google-fonts/fonts/Source-Sans-Pro.woff" afterPath="$PROJECT_DIR$/public/vendor/laravel-admin/google-fonts/fonts/Source-Sans-Pro.woff" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/vendor/laravel-admin/google-fonts/fonts/Source-Sans-Pro.woff2" afterPath="$PROJECT_DIR$/public/vendor/laravel-admin/google-fonts/fonts/Source-Sans-Pro.woff2" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.editorconfig" afterPath="$PROJECT_DIR$/.editorconfig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env.example" afterPath="$PROJECT_DIR$/.env.example" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="$PROJECT_DIR$/.gitattributes" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
@@ -433,8 +432,8 @@
       <file leaf-file-name=".env" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+            <state relative-caret-position="305">
+              <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -843,12 +842,12 @@
       <workItem from="1555460949831" duration="19411000" />
       <workItem from="1555633750740" duration="13009000" />
       <workItem from="1555857007221" duration="1000" />
-      <workItem from="1555860150702" duration="5386000" />
+      <workItem from="1555860150702" duration="5552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67657000" />
+    <option name="totallyTimeSpent" value="67823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1087,8 +1086,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+        <state relative-caret-position="305">
+          <caret line="47" column="42" lean-forward="true" selection-start-line="47" selection-start-column="42" selection-end-line="47" selection-end-column="42" />
           <folding />
         </state>
       </provider>
