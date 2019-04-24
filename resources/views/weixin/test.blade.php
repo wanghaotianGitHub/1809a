@@ -25,7 +25,6 @@
         colorLight : '#ffffff',
         correctLevel : QRCode.CorrectLevel.H
     });
-
     //qrcode.clear();
     //qrcode.makeCode('new $wpayurl');
 </script>

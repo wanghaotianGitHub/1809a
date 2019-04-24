@@ -171,31 +171,31 @@ class WxController extends Controller{
         $arr = array(
             "button"=> array(
                 array(
-                    'name'=>"葫芦娃娃",
+                    'name'=>"最炫",
                     "type"=>"click",
                     "key"=>"aaaaa",
                     "sub_button"=>array(
                         array(
                             "type"=>"click",
-                            "name"=>"大娃娃",
+                            "name"=>"王有才",
                             "key"=>"iii"
                         ),
                         array(
                             "type"=>"click",
-                            "name"=>"小娃娃",
+                            "name"=>"罗猪猪",
                             "key"=>"iii"
                         ),
                     ),
 
                 ),
                 array(
-                    'name'=>"玩具",
+                    'name'=>"哦哦",
                     "type"=>"click",
                     "key"=>"bbb",
                     "sub_button"=>array(
                         array(
                             "type"=>"click",
-                            "name"=>"店铺",
+                            "name"=>"商家",
                             "key"=>"iii"
                         ),
                         array(
@@ -207,7 +207,7 @@ class WxController extends Controller{
                     ),
                 ),
                 array(
-                    'name'=>"推广",
+                    'name'=>"扫我",
                     "type"=>"click",
                     "key"=>"bbb",
                     "sub_button"=>array(
@@ -408,6 +408,6 @@ class WxController extends Controller{
         $response = '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>';
         echo $response;
     }
-
+    
 }
 ?>
