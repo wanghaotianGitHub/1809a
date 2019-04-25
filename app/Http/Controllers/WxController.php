@@ -68,7 +68,6 @@ class WxController extends Controller{
                 echo $str;
             }
         }
-
         if($MsgType=='image'){
             $url="https://api.weixin.qq.com/cgi-bin/media/get?access_token=$accessToken&media_id=$MediaId";
             $response = file_get_contents($url);
@@ -165,6 +164,7 @@ class WxController extends Controller{
         }
         return $accessToken;
     }
+    //菜单
     public function menu(){
         $accessToken = $this->accessToken();
         $url="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=$accessToken";
@@ -261,8 +261,8 @@ class WxController extends Controller{
         echo $res_str;
     }
 
-    public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';        // 统一下单接口
-    public $notify_url = 'http://1809lancong.comcto.com/notify'; // 支付回调
+    public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';   // 统一下单接口
+    public $notify_url = 'http://1809lancong.comcto.com/notify';      // 支付回调
     public function test(){
         $total_fee = 1;         //用户要支付的总金额
 //        $order=DB::table('shop_order')->first();
