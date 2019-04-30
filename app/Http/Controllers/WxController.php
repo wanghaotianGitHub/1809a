@@ -123,7 +123,7 @@ class WxController extends Controller{
                   <Content><![CDATA[$string]]></Content>
                 </xml>";
                 echo $str;
-            }else if($Content=="最新商品"){
+            }else if($Content=="彪马"){
                 $good = DB::table('shop_goods')->where('goods_up',1)->orderBy('create_time','desc')->first();
                 $good_name = $good->goods_name;
                 $title = "哦呦";

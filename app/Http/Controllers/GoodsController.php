@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -8,6 +7,7 @@ use Illuminate\Http\Request;
 use GuzzleHttp;
 use App\Http\Controllers\WXBizDataCryptController;
 use Illuminate\Support\Str;
+use App\Model\GoodsModel;
 class GoodsController extends Controller
 {
     public function goodDetail(){
@@ -114,5 +114,28 @@ class GoodsController extends Controller
         $data = DB::table('shop_goods')->where('goods_id',$goods_id)->first();
 //        print_r($code_url);die;
         return view('goods.list',['data'=>$data,'code_url'=>$code_url]);
+    }
+
+    public function cacheGoods($goods_id)
+    {
+        $goods_id = intval($goods_id);
+        $redis_cache_goods_key = 'h:goods_info:' . $goods_id;
+        $cache_info = Redis::hGetAll($redis_cache_goods_key);
+        //var_dump($cache_info);echo '<hr>';
+        if ($cache_info) {            //有缓存
+            echo 'Cache';
+            echo '</br>';
+            echo '<pre>';
+            print_r($cache_info);
+            echo '</pre>';
+        } else {                      //无缓存  缓存商品信息
+            echo "No Cache";
+            echo '</br>';;
+            $goods_info = GoodsModel::where(['id' => $goods_id])->first()->toArray();
+            echo '<pre>';
+            print_r($goods_info);
+            echo '</pre>';
+            Redis::hMset($redis_cache_goods_key, $goods_info);
+        }
     }
 }

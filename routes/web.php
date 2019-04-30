@@ -33,4 +33,6 @@ Route::any('details','GoodsController@details');
 Route::any('goodDetail','GoodsController@goodDetail');
 Route::any('accessToken','GoodsController@accessToken');
 
+Route::get('/goods/cache/{id?}', 'GoodsController@cacheGoods');      //缓存商品信息
+
 
