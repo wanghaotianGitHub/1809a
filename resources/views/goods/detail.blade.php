@@ -14,12 +14,12 @@
     <tr>
         <td>名称</td>
         <td>价格</td>
-        <td>图片</td>
+        {{--<td>图片</td>--}}
     </tr>
     <tr>
         <td>{{$good->goods_name}}</td>
         <td>{{$good->goods_selfprice}}</td>
-        <td ><img class="lazy" src="{{URL::asset('goodsimg/'.$good->goods_img)}}"></a> </td>
+        {{--<td ><img class="lazy" src="{{URL::asset('goodsimg/'.$good->goods_img)}}"></a> </td>--}}
     </tr>
 </table>
 
