@@ -39,7 +39,7 @@ class WxController extends Controller{
 //        print_r($date);die;
         if($Event=='subscribe'){
             if($date){
-                $content = "$name,欢迎回来";
+                $content = "$name,请输入商品名字字样";
                 $str = "
                 <xml>
                   <ToUserName><![CDATA[$FromUserName]]></ToUserName>
