@@ -23,11 +23,6 @@ Route::any('openiddo','WxController@openiddo');
 Route::any('give','WxController@give');  //用户授权
 Route::any('code','WxController@code');  //code回调
 
-//微信支付
-Route::any('test','WxController@test');           //消息群发
-Route::any('notify','WxController@notify');       //微信支付回调地址
-
-
 Route::any('goodList','GoodsController@goodList');
 Route::any('details','GoodsController@details');
 Route::any('goodDetail','GoodsController@goodDetail');

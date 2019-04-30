@@ -248,7 +248,6 @@ class WxController extends Controller{
     }
     public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';   // 统一下单接口
     public $notify_url = 'http://1809wanghaotian.comcto.com/notify';      // 支付回调
-
     /**
      * 用户授权
      */
