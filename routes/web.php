@@ -20,6 +20,8 @@ Route::post('valid','WxController@wxEvent');
 Route::any('accessToken','WxController@accessToken');
 Route::any('menu','WxController@menu');
 Route::any('openiddo','WxController@openiddo');
+Route::any('give','WxController@give');  //用户授权
+Route::any('code','WxController@code');  //code回调
 
 //微信支付
 Route::any('test','WxController@test');           //消息群发

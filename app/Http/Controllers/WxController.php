@@ -41,13 +41,13 @@ class WxController extends Controller{
             if($date){
                 $content = "$name,请输入商品名字字样";
                 $str = "
-                <xml>
-                  <ToUserName><![CDATA[$FromUserName]]></ToUserName>
-                  <FromUserName><![CDATA[$ToUserName]]></FromUserName>
-                  <CreateTime>$CreateTime</CreateTime>
-                  <MsgType><![CDATA[text]]></MsgType>
-                  <Content><![CDATA[$content]]></Content>
-                </xml>";
+                    <xml>
+                      <ToUserName><![CDATA[$FromUserName]]></ToUserName>
+                      <FromUserName><![CDATA[$ToUserName]]></FromUserName>
+                      <CreateTime>$CreateTime</CreateTime>
+                      <MsgType><![CDATA[text]]></MsgType>
+                      <Content><![CDATA[$content]]></Content>
+                    </xml>";
                 echo $str;
             }else{
                 $data=[
@@ -55,15 +55,15 @@ class WxController extends Controller{
                     'openid'=>$openid
                 ];
                 $array = DB::table('user')->insert($data);
-                $content = "$name,欢迎关注";
+                $content = "$name,欢迎回来,请输入商品名字字样";
                 $str = "
-            <xml>
-              <ToUserName><![CDATA[$FromUserName]]></ToUserName>
-              <FromUserName><![CDATA[$ToUserName]]></FromUserName>
-              <CreateTime>$CreateTime</CreateTime>
-              <MsgType><![CDATA[text]]></MsgType>
-              <Content><![CDATA[$content]]></Content>
-            </xml>";
+                    <xml>
+                      <ToUserName><![CDATA[$FromUserName]]></ToUserName>
+                      <FromUserName><![CDATA[$ToUserName]]></FromUserName>
+                      <CreateTime>$CreateTime</CreateTime>
+                      <MsgType><![CDATA[text]]></MsgType>
+                      <Content><![CDATA[$content]]></Content>
+                    </xml>";
                 echo $str;
             }
         }
@@ -126,7 +126,7 @@ class WxController extends Controller{
             }else if($Content=="最新商品"){
                 $good = DB::table('shop_goods')->where('goods_up',1)->orderBy('create_time','desc')->first();
                 $good_name = $good->goods_name;
-                $title = "天天";
+                $title = "哦呦";
                 $picurl = "http://1809wanghaotian.comcto.com/goodsimg/$good->goods_img";
                 $url = "http://1809wanghaotian.comcto.com/goodDetail";
                 $str = "<xml>
@@ -164,9 +164,6 @@ class WxController extends Controller{
             ];
             $array = DB::table('sucai')->insert($data);
         }
-
-
-
 
 
 //                {
@@ -301,7 +298,7 @@ class WxController extends Controller{
         echo $res_str;
     }
     public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';   // 统一下单接口
-    public $notify_url = 'http://1809lancong.comcto.com/notify';      // 支付回调
+    public $notify_url = 'http://1809wanghaotian.comcto.com/notify';      // 支付回调
     public function test(){
         $total_fee = 1;         //用户要支付的总金额
 //        $order=DB::table('shop_order')->first();
@@ -446,6 +443,15 @@ class WxController extends Controller{
         }
         $response = '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>';
         echo $response;
+    }
+    /**
+     * 用户授权
+     */
+    public function give(){
+        $scope = "snsapi_userinfo";
+        $url = urlencode("http://1809lancong.comcto.com/code");
+        $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.env('WX_APPID').'&redirect_uri='.$url.'&response_type=code&scope='.$scope.'&state=STATE#wechat_redirect';
+        return view('weixin.give',['url'=>$url]);
     }
 }
 ?>
