@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Wangtian laravel
+                    WANGss
                 </div>
 
                 <div class="links">

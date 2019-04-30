@@ -37,7 +37,6 @@ class WxController extends Controller{
         $openid = $arr['openid'];
         $date = DB::table('user')->where('openid',$openid)->count();
 //        print_r($date);die;
-
         if($Event=='subscribe'){
             if($date){
                 $content = "$name,欢迎回来";
@@ -143,7 +142,6 @@ class WxController extends Controller{
             ];
             $array = DB::table('sucai')->insert($data);
         }
-
     }
     //获取accessToken
     public function accessToken(){
@@ -186,7 +184,6 @@ class WxController extends Controller{
                             "key"=>"iii"
                         ),
                     ),
-
                 ),
                 array(
                     'name'=>"哦哦",
@@ -203,7 +200,6 @@ class WxController extends Controller{
                             "name"=>"百度",
                             "url"=>"https://www.baidu.com/"
                         ),
-
                     ),
                 ),
                 array(
@@ -217,7 +213,6 @@ class WxController extends Controller{
                             "key"=>"iii"
                         ),
                     ),
-
                 ),
             ),
         );
@@ -229,7 +224,6 @@ class WxController extends Controller{
         $res_str = $response->getBody();
         echo $res_str;
     }
-
     /**openid群发*/
     public function openiddo(Request $request){
         $accessToken = $this->accessToken();
@@ -260,7 +254,6 @@ class WxController extends Controller{
 //        print_r($res_str);die;
         echo $res_str;
     }
-
     public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';   // 统一下单接口
     public $notify_url = 'http://1809lancong.comcto.com/notify';      // 支付回调
     public function test(){
@@ -408,6 +401,5 @@ class WxController extends Controller{
         $response = '<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>';
         echo $response;
     }
-    
 }
 ?>
