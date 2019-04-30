@@ -78,7 +78,52 @@ class WxController extends Controller{
                 'image_url'=>"/tmp/".$img_name
             ];
             $array = DB::table('sucai')->insert($data);
-        }else if($Content=="彪马"){
+        }else if($MsgType=='text'){
+            if(strpos($Content,"天气")){
+                $cityid =101110101;
+                $url="https://www.tianqiapi.com/api/?version=v1&$cityid";
+                $response = file_get_contents($url);
+                $arr = json_decode($response,true);
+//                print_r($arr);die;
+                $city ="城市：" . $arr['city'];
+                $time ="当前时间:" . $arr['update_time'];
+                foreach($arr['data'] as $v){
+                    $week = $v['week'];
+                    $wea ="天气：" . $v['wea'];
+//                    print_r($v['air_tips']);die;
+//                    $air_tips ="建议：" . $v['air_tips'];
+//                    print_r($air_tips);die;
+                    $tem1 ="最高气温：" . $v['tem1'];
+                    $tem2 ="最低气温：" . $v['tem2'];
+                    $win_speed ="风级：" . $v['win_speed'];
+                }
+                $data = [
+                    'city'=>$city,
+                    'time'=>$time,
+                    'week'=>$week,
+                    'wea'=>$wea,
+                    'time'=>$wea,
+                    'tem1'=>$tem1,
+                    'tem2'=>$tem2,
+                    'win_speed'=>$win_speed,
+                ];
+                $string="
+                $city \n
+                $time $week \n
+                $wea \n
+                $tem1 \n
+                $tem2 \n
+                $win_speed ";
+                $str = "
+                <xml>
+                  <ToUserName><![CDATA[$FromUserName]]></ToUserName>
+                  <FromUserName><![CDATA[$ToUserName]]></FromUserName>
+                  <CreateTime>$CreateTime</CreateTime>
+                  <MsgType><![CDATA[text]]></MsgType>
+                  <Content><![CDATA[$string]]></Content>
+                </xml>";
+                echo $str;
+            }else if($Content=="彪马"){
                 $good = DB::table('shop_goods')->where('goods_up',1)->orderBy('create_time','desc')->first();
                 $good_name = $good->goods_name;
                 $title = "哦呦";
@@ -203,6 +248,7 @@ class WxController extends Controller{
     }
     public $weixin_unifiedorder_url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';   // 统一下单接口
     public $notify_url = 'http://1809wanghaotian.comcto.com/notify';      // 支付回调
+
     /**
      * 用户授权
      */
