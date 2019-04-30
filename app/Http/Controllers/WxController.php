@@ -123,6 +123,28 @@ class WxController extends Controller{
                   <Content><![CDATA[$string]]></Content>
                 </xml>";
                 echo $str;
+            }else if($Content=="最新商品"){
+                $good = DB::table('shop_goods')->where('goods_up',1)->orderBy('create_time','desc')->first();
+                $good_name = $good->goods_name;
+                $title = "天天";
+                $picurl = "http://1809wanghaotian.comcto.com/goodsimg/$good->goods_img";
+                $url = "http://1809wanghaotian.comcto.com/goodDetail";
+                $str = "<xml>
+                          <ToUserName><![CDATA[$FromUserName]]></ToUserName>
+                          <FromUserName><![CDATA[$ToUserName]]></FromUserName>
+                          <CreateTime>$CreateTime</CreateTime>
+                          <MsgType><![CDATA[news]]></MsgType>
+                          <ArticleCount>1</ArticleCount>
+                          <Articles>
+                            <item>
+                              <Title><![CDATA[$title]]></Title>
+                              <Description><![CDATA[$good_name]]></Description>
+                              <PicUrl><![CDATA[$picurl]]></PicUrl>
+                              <Url><![CDATA[$url]]></Url>
+                            </item>
+                          </Articles>
+                        </xml>";
+                echo $str;
             }else{
                 $data = [
                     'openid'=>$openid,
@@ -142,6 +164,30 @@ class WxController extends Controller{
             ];
             $array = DB::table('sucai')->insert($data);
         }
+
+
+
+
+
+//                {
+//                $data = [
+//                    'openid'=>$openid,
+//                    'content'=>$Content
+//                ];
+//                $array = DB::table('sucai')->insert($data);
+//            }
+//        }else if($MsgType=='voice'){
+//            $url="https://api.weixin.qq.com/cgi-bin/media/get?access_token=$accessToken&media_id=$MediaId";
+//            $response = file_get_contents($url);
+//            $file_name = rtrim(substr("QAZWSXEDCRFVTGBYHNUJMIKMOLqwertyuiopasdfghjklzxcvbnmP", -10), '"').".mp3";//取文件名后10位
+//            $voice_name =  substr(md5(time() . mt_rand()), 10, 8) . '_' . $file_name;//最后的文件名;
+//            file_put_contents("/tmp/$voice_name",$response,FILE_APPEND);
+//            $data = [
+//                'openid'=>$openid,
+//                'voice_url'=>"/tmp/".$voice_name
+//            ];
+//            $array = DB::table('sucai')->insert($data);
+//        }
     }
     //获取accessToken
     public function accessToken(){
